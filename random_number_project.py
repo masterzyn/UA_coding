@@ -4,13 +4,43 @@
 import random
 
 # Getting our random number that the user will try to guess
-random_number = random.randint(1,100)
+def get_ran_num():
+    return(random.randint(1,100))
 
-user_guess = int(input("Guess a number 1-100: "))
+def start_game(random_number):
 
-if user_guess > random_number:
-    print("Too high.")
-elif user_guess < random_number:
-    print("Too low.")
-else:
-    print("You got it right!")
+    user_guess = int(input("Guess a number 1-100: "))
+
+    if user_guess > random_number:
+        print("Too high.")
+        continue_game(random_number)
+    elif user_guess < random_number:
+        print("Too low.")
+        continue_game(random_number)
+    else:
+        print("You got it right!")
+        cont = input("Play again? (y/n): ")
+        if cont == "y":
+            start_game(get_ran_num())
+        else:
+            exit()
+
+
+def continue_game(random_number):
+    user_guess = int(input("Guess a number 1-100: "))
+
+    if user_guess > random_number:
+        print("Too high.")
+        continue_game(random_number)
+    elif user_guess < random_number:
+        print("Too low.")
+        continue_game(random_number)
+    else:
+        print("You got it right!")
+        cont = input("Play again? (y/n): ")
+        if cont == "y":
+            start_game(get_ran_num())
+        else:
+            exit()   
+
+start_game(get_ran_num())
